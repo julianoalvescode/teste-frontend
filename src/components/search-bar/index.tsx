@@ -14,7 +14,7 @@ export const Search = (): React.ReactElement => {
   } = useForm()
 
   const onSubmit = (data): void => {
-    router.push(`/org?name=${data.repository}`)
+    router.push(`/org/${data.org}`)
   }
 
   return (
@@ -22,7 +22,7 @@ export const Search = (): React.ReactElement => {
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Container>
           <S.Input
-            {...register('repository', { required: true })}
+            {...register('org', { required: true })}
             type="text"
             placeholder="Enter your URL"
           />

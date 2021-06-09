@@ -1,42 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
-import { GetServerSidePropsContext } from 'next'
 
 import * as S from 'templates/org/styles'
 import * as C from 'components'
 
-import { useStoreOrg, useStoreRepo } from 'store'
 import { OrgService, RepoService } from 'services'
 
 import { motion } from 'framer-motion'
 
-import { getParam } from 'utils'
-
-const OrgPage = (): React.ReactElement => {
-  const { repo, addRepo } = useStoreRepo((state) => state)
-  const { org, addOrg } = useStoreOrg()
+const OrgPage = (props): React.ReactElement => {
   const [isError, SetError] = useState(false)
 
   useEffect(() => {
-    const name = getParam('name')
-
-    async function getData(): Promise<void> {
-      if (name !== undefined) {
-        const orgApi = await OrgService.getOrg(name)
-        const repoApi = await RepoService.getRepo(name)
-
-        if (orgApi !== false) {
-          addOrg(orgApi)
-          addRepo(repoApi)
-        } else {
-          SetError(true)
-        }
-      } else {
-        SetError(true)
-      }
+    if (props.repo == false && props.org == false) {
+      SetError(true)
     }
-
-    getData()
   }, [])
 
   return (
@@ -53,10 +31,10 @@ const OrgPage = (): React.ReactElement => {
         {!isError ? (
           <S.Container>
             <C.BackLink />
-            <C.Avatar data={org} />
+            <C.Avatar data={props.org} />
             <S.CardBox>
-              {repo.length ? (
-                repo.map((i) => <C.Card data={i} key={i.id} />)
+              {props.repo.length ? (
+                props.repo.map((i) => <C.Card data={i} key={i.id} />)
               ) : (
                 <h1>Sem repositório</h1>
               )}
@@ -68,6 +46,28 @@ const OrgPage = (): React.ReactElement => {
       </motion.div>
     </>
   )
+}
+
+export async function getStaticProps({ params }) {
+  const orgApi = await OrgService.getOrg(params.name)
+  const repoApi = await RepoService.getRepo(params.name)
+
+  return {
+    props: { org: orgApi, repo: repoApi },
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: {
+          name: 'facebook',
+        },
+      },
+    ],
+    fallback: false,
+  }
 }
 
 export default OrgPage

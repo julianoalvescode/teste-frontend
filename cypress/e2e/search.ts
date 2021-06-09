@@ -10,7 +10,7 @@ describe('Search Page', () => {
   it('Fluxo Page', () => {
     cy.get('input').type('facebook')
     cy.get('.styles__Button-sc-12mhrge-0').click()
-    cy.url().should('eq', 'http://localhost:3000/org?name=facebook')
+    cy.url().should('eq', 'http://localhost:3000/org/facebook')
     cy.get('.styles__Title-ry3nyh-3').contains('Facebook')
   })
 })
