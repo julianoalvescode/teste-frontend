@@ -1,0 +1,27 @@
+export interface Org {
+  avatar_url: string | null
+  blog: string | null
+  company: string | null
+  created_at: string | null
+  description: string | null
+  email: string | null
+  events_url: string | null
+  followers: number | null
+  following: string | null
+  has_organization_projects: boolean | null
+  has_repository_projects: boolean | null
+  id: number | null
+  is_verified: boolean | null
+  issues_url: string | null
+  location: string | null
+  login: string | null
+  members_url: string | null
+  name: string | null
+  node_id: string | null
+  public_gists: number | null
+  public_repos: number | null
+  twitter_username: string | null
+  type: string | null
+  updated_at: string | null
+  url: string | null
+}
