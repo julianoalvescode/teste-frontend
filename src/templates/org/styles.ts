@@ -18,10 +18,12 @@ export const Container = styled.div`
   }
 
   ${mobile} {
+    margin-top: 1.7rem;
     width: 80%;
   }
 
   ${mobileSmall} {
+    margin-top: 1.7rem;
     width: 90%;
   }
 `

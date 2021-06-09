@@ -1,10 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { desktop, mobileSmall } from 'styles'
+import { desktop, mobileSmall, mobile } from 'styles'
 
-export const Container = styled.form`
+export const Container = styled.div`
   background-color: #ffff;
-
   border-radius: 15px;
   box-shadow: -2px 5px 15px 0px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: -2px 5px 15px 0px rgba(0, 0, 0, 0.08);
@@ -18,38 +17,43 @@ export const Container = styled.form`
     width: 600px;
   }
 
+  ${mobile} {
+    padding: 0px 25px;
+    width: 360px;
+    justify-content: flex-start;
+  }
+
   ${mobileSmall} {
-    width: 90%;
+    padding: 0px 25px;
+    width: 290px;
     height: 80px;
   }
 `
 
-export const Input = styled.input`
-  width: 55%;
-  height: 80px;
-  border: none;
-  font-size: 1.1rem;
-  color: #7a7d95;
-
-  ::placeholder {
-    color: #7a7d95;
-  }
-
-  :-webkit-autofill {
-    background-color: none !important;
-  }
-
-  ${mobileSmall} {
-    font-size: 0.9rem;
-  }
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 `
 
-export const Button = styled.button`
-  height: 60px;
-  width: 25%;
-  background-color: #12d998;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 6px;
+export const Input = styled.input`
+  ${({ theme }) => css`
+    width: 55%;
+    height: 80px;
+    border: none;
+    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.gray};
+
+    ::placeholder {
+      color: ${theme.colors.gray};
+    }
+
+    :-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+
+    ${mobileSmall} {
+      font-size: ${theme.font.sizes.xxsmall};
+    }
+  `}
 `

@@ -10,7 +10,8 @@ import { AnimateSharedLayout } from 'framer-motion'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import { theme, GlobalStyle } from 'styles'
+import { GlobalStyle } from 'styles'
+import theme from 'styles/theme'
 
 function App({ Component, pageProps }: AppProps): React.ReactElement {
   return (

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { GetServerSidePropsContext } from 'next'
 
-import * as S from './styles'
+import * as S from 'templates/org/styles'
 import * as C from 'components'
 
 import { useStoreOrg, useStoreRepo } from 'store'

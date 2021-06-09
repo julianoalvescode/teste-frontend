@@ -2,7 +2,7 @@ import * as I from 'shared/interfaces'
 
 class Org {
   public async getOrg(name: string): Promise<I.Org | boolean> {
-    return await fetch(`${process.env.NEXT_PUBLIC_API_ORG + name}`, {
+    return await fetch(`https://api.github.com/orgs/${name}`, {
       method: 'GET',
     }).then(async (response) => {
       const { status } = response

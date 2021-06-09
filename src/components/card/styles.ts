@@ -1,14 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 6px;
-  cursor: pointer;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    background-color: ${theme.colors.white};
+    padding: 25px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+  `}
 `
 
 export const Info = styled.div`
@@ -20,5 +22,8 @@ export const Info = styled.div`
 export const Title = styled.h4``
 
 export const Description = styled.p`
-  color: #586069;
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    font-size: ${theme.font.sizes.xxsmall};
+  `}
 `

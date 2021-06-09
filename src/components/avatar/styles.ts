@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { desktop, mobileSmall } from 'styles'
 export const Container = styled.main`
@@ -41,11 +41,16 @@ export const Info = styled.div`
 `
 
 export const Title = styled.h4`
-  font-size: 1.8rem;
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.medium};
+  `}
 `
 
 export const Description = styled.p`
-  color: #6a737d;
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    font-size: ${theme.font.sizes.xxsmall};
+  `}
 `
 
 export const Location = styled.div`
@@ -55,6 +60,8 @@ export const Location = styled.div`
 `
 
 export const LocationTitle = styled.p`
-  color: #24292e;
-  font-size: 0.9rem;
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    font-size: ${theme.font.sizes.xxsmall};
+  `}
 `

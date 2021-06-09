@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import Link from 'next/link'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -21,26 +20,9 @@ export const Info = styled.div`
   gap: 25px;
 `
 
-export const LinkBox = styled.div`
-  height: 40px;
-  width: 300px;
-  background-color: #12d998;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  a {
-    text-decoration: none !important;
-    color: #fff;
-  }
-`
-
 export const Title = styled.h5`
-  font-size: 1.2rem;
-  text-align: center;
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    text-align: center;
+  `}
 `
-
-export const BackSearch = styled(Link)``

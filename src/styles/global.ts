@@ -1,6 +1,15 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
+
+		${({ theme }) => css`
+      body,
+      button {
+        -webkit-font-smoothing: antialiased;
+        font-family: ${theme.font.family};
+      }
+    `}
+
 
 		* {
         margin: 0;
@@ -17,15 +26,12 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
-    body, button {
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Inter', Arial, Helvetica, sans-serif;
-    }
 
 		.container-org {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			width: 100%
 		}
 
 

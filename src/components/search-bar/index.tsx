@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 
 import * as S from './styles'
+import * as BC from 'components/basicComponents'
 
 export const Search = (): React.ReactElement => {
   const router = useRouter()
@@ -18,15 +19,18 @@ export const Search = (): React.ReactElement => {
 
   return (
     <>
-      <S.Container onSubmit={handleSubmit(onSubmit)}>
-        <S.Input
-          {...register('repository', { required: true })}
-          type="text"
-          placeholder="Enter your URL"
-        />
-        <S.Button type="submit">GET INFO</S.Button>
-      </S.Container>
-      {errors.repository && 'The fiel is empty'}
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Container>
+          <S.Input
+            {...register('repository', { required: true })}
+            type="text"
+            placeholder="Enter your URL"
+          />
+          <BC.ButtonSubmit isDesktop={false} name="GET INFO" />
+        </S.Container>
+        <BC.ButtonSubmit isDesktop={true} name="GET INFO" />
+        {errors.repository && 'The fiel is empty'}
+      </S.Form>
     </>
   )
 }

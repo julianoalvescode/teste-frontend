@@ -1,13 +1,18 @@
-import Link from 'next/link'
+import React, { useEffect } from 'react'
 
-import { Layout } from 'layouts'
+import { useRouter } from 'next/router'
 
-const IndexPage = (): React.ReactElement => (
-  <Layout>
-    <Link href="/about">
-      <a>About</a>
-    </Link>
-  </Layout>
-)
+const IndexPage = (): React.ReactElement => {
+  const router = useRouter()
 
+  useEffect(() => {
+    router.push('/search')
+  }, [])
+
+  return (
+    <>
+      <h1>Seja Bem-vindo</h1>
+    </>
+  )
+}
 export default IndexPage

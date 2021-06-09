@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import * as S from './styles'
+import * as S from 'templates/search/styles'
 import * as C from 'components'
 
 import { motion } from 'framer-motion'
